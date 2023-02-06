@@ -1,0 +1,1208 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.1">
+  <Nodes>
+    <Node ToolID="44">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="55" y="719" width="1463" height="354" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>SeattlePetLicenses FCT</Caption>
+          <Style TextColor="#314c4a" FillColor="#fdb9c7" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="32">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="80" y="804" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <CachedCosmeticName />
+              <File FileFormat="23" RecordLimit="">aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* 
+from SeattlePetLicenses_stg</File>
+              <FormatSpecificOptions>
+                <SingleRowFetch>False</SingleRowFetch>
+                <ReadCentroids>False</ReadCentroids>
+                <TableStyle>Quoted</TableStyle>
+                <CacheData>False</CacheData>
+                <SessionReadOnly>True</SessionReadOnly>
+                <ReadUncommitted>False</ReadUncommitted>
+                <NoProgress>True</NoProgress>
+                <PostSQL />
+                <PreSQLOnConfig>True</PreSQLOnConfig>
+                <PreSQL />
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>aka:localhost_sqlserver_damg7370
+Query=select SeattlePetLicenses_st...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="LicenseSK" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="Int32" />
+                <Field name="LicenseNumber" size="7" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="String" />
+                <Field name="LicenseIssueDate" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="Date" />
+                <Field name="AnimalName" size="50" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="V_WString" />
+                <Field name="Species" size="4" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="String" />
+                <Field name="PrimaryBreed" size="46" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="V_String" />
+                <Field name="SecondaryBreed" size="46" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="V_String" />
+                <Field name="ZipCode" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="Int32" />
+                <Field name="DI_CreateDate" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="DateTime" />
+                <Field name="DI_WorkflowDirectory" size="256" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="V_WString" />
+                <Field name="DI_WorkflowFileName" size="256" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="33">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="392" y="804" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="DateTimeNow()" field="DI_CreateDate" size="19" type="DateTime" />
+                <FormulaField expression="[Engine.WorkflowDirectory]" field="DI_WorkflowDirectory" size="256" type="V_WString" />
+                <FormulaField expression="[Engine.WorkflowFileName]" field="DI_WorkflowFileName" size="256" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>DI_CreateDate = DateTimeNow()
+DI_WorkflowDirectory = [Engine.WorkflowDirectory]
+...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="34">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="632" y="816" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="Species" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="Species" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="True" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="Left_LicenseSK" selected="True" input="Left_" />
+                    <SelectField field="Left_LicenseNumber" selected="True" input="Left_" />
+                    <SelectField field="Left_LicenseIssueDate" selected="True" input="Left_" />
+                    <SelectField field="Left_AnimalName" selected="True" input="Left_" />
+                    <SelectField field="Right_SpeciesSK" selected="True" input="Right_" />
+                    <SelectField field="Left_Species" selected="False" input="Left_" />
+                    <SelectField field="Left_PrimaryBreed" selected="True" input="Left_" />
+                    <SelectField field="Left_SecondaryBreed" selected="True" input="Left_" />
+                    <SelectField field="Left_ZipCode" selected="True" input="Left_" />
+                    <SelectField field="Left_DI_CreateDate" selected="True" input="Left_" />
+                    <SelectField field="Left_DI_WorkflowDirectory" selected="True" input="Left_" />
+                    <SelectField field="Left_DI_WorkflowFileName" selected="True" input="Left_" />
+                    <SelectField field="Right_Species" selected="False" rename="Right_Species" input="Right_" />
+                    <SelectField field="*Unknown" selected="False" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="35">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="536" y="876" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <CachedCosmeticName />
+              <File FileFormat="23" RecordLimit="">aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_DIM_Species.SpeciesSK,
+	SeattlePetLicenses_DIM_Species.Species 
+from SeattlePetLicenses_DIM_Species</File>
+              <FormatSpecificOptions>
+                <SingleRowFetch>False</SingleRowFetch>
+                <ReadCentroids>False</ReadCentroids>
+                <TableStyle>Quoted</TableStyle>
+                <CacheData>False</CacheData>
+                <SessionReadOnly>True</SessionReadOnly>
+                <ReadUncommitted>False</ReadUncommitted>
+                <NoProgress>True</NoProgress>
+                <PostSQL />
+                <PreSQLOnConfig>True</PreSQLOnConfig>
+                <PreSQL />
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>aka:localhost_sqlserver_damg7370
+Query=select SeattlePetLicenses_DI...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="SpeciesSK" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_DIM_Species.SpeciesSK,&#xA;	SeattlePetLicenses_DIM_Species.Species &#xA;from SeattlePetLicenses_DIM_Species" type="Int32" />
+                <Field name="Species" size="4" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_DIM_Species.SpeciesSK,&#xA;	SeattlePetLicenses_DIM_Species.Species &#xA;from SeattlePetLicenses_DIM_Species" type="String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="36">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="884" y="828" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="PrimaryBreed" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="PrimaryBreed" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="True" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="Left_LicenseSK" selected="True" input="Left_" />
+                    <SelectField field="Left_LicenseNumber" selected="True" input="Left_" />
+                    <SelectField field="Left_LicenseIssueDate" selected="True" input="Left_" />
+                    <SelectField field="Left_AnimalName" selected="True" input="Left_" />
+                    <SelectField field="Left_SpeciesSK" selected="True" input="Left_" />
+                    <SelectField field="Right_PrimaryBreedSK" selected="True" input="Right_" />
+                    <SelectField field="Left_PrimaryBreed" selected="False" input="Left_" />
+                    <SelectField field="Left_SecondaryBreed" selected="True" input="Left_" />
+                    <SelectField field="Left_ZipCode" selected="True" input="Left_" />
+                    <SelectField field="Left_DI_CreateDate" selected="True" input="Left_" />
+                    <SelectField field="Left_DI_WorkflowDirectory" selected="True" input="Left_" />
+                    <SelectField field="Left_DI_WorkflowFileName" selected="True" input="Left_" />
+                    <SelectField field="Right_PrimaryBreed" selected="False" rename="Right_PrimaryBreed" input="Right_" />
+                    <SelectField field="*Unknown" selected="False" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="37">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="740" y="768" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Alteryx\Engine\Engine_35048_c5f26128cf7143d598531301aaf72afd_\Engine_32684_1734a03e45464dc89a7e27ee2c8223aa_.yxdb</TempFile>
+              <Layout>
+                <View1>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="38">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="776" y="888" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <CachedCosmeticName />
+              <File FileFormat="23" RecordLimit="">aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_DIM_PrimaryBreed.PrimaryBreedSK,
+	SeattlePetLicenses_DIM_PrimaryBreed.PrimaryBreed 
+from SeattlePetLicenses_DIM_PrimaryBreed</File>
+              <FormatSpecificOptions>
+                <SingleRowFetch>False</SingleRowFetch>
+                <ReadCentroids>False</ReadCentroids>
+                <TableStyle>Quoted</TableStyle>
+                <CacheData>False</CacheData>
+                <SessionReadOnly>True</SessionReadOnly>
+                <ReadUncommitted>False</ReadUncommitted>
+                <NoProgress>True</NoProgress>
+                <PostSQL />
+                <PreSQLOnConfig>True</PreSQLOnConfig>
+                <PreSQL />
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>aka:localhost_sqlserver_damg7370
+Query=select SeattlePetLicenses_DI...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="PrimaryBreedSK" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_DIM_PrimaryBreed.PrimaryBreedSK,&#xA;	SeattlePetLicenses_DIM_PrimaryBreed.PrimaryBreed &#xA;from SeattlePetLicenses_DIM_PrimaryBreed" type="Int32" />
+                <Field name="PrimaryBreed" size="46" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_DIM_PrimaryBreed.PrimaryBreedSK,&#xA;	SeattlePetLicenses_DIM_PrimaryBreed.PrimaryBreed &#xA;from SeattlePetLicenses_DIM_PrimaryBreed" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="39">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="1100" y="840" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="SecondaryBreed" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="SecondaryBreed" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="True" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="Left_LicenseSK" selected="True" input="Left_" />
+                    <SelectField field="Left_LicenseNumber" selected="True" input="Left_" />
+                    <SelectField field="Left_LicenseIssueDate" selected="True" input="Left_" />
+                    <SelectField field="Left_AnimalName" selected="True" input="Left_" />
+                    <SelectField field="Left_SpeciesSK" selected="True" input="Left_" />
+                    <SelectField field="Left_PrimaryBreedSK" selected="True" input="Left_" />
+                    <SelectField field="Right_SecondaryBreedSK" selected="True" input="Right_" />
+                    <SelectField field="Left_SecondaryBreed" selected="False" input="Left_" />
+                    <SelectField field="Left_ZipCode" selected="True" input="Left_" />
+                    <SelectField field="Left_DI_CreateDate" selected="True" input="Left_" />
+                    <SelectField field="Left_DI_WorkflowDirectory" selected="True" input="Left_" />
+                    <SelectField field="Left_DI_WorkflowFileName" selected="True" input="Left_" />
+                    <SelectField field="Right_SecondaryBreed" selected="False" rename="Right_SecondaryBreed" input="Right_" />
+                    <SelectField field="*Unknown" selected="False" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="40">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="980" y="912" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <CachedCosmeticName />
+              <File FileFormat="23" RecordLimit="">aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_DIM_SecondaryBreed.SecondaryBreedSK,
+	SeattlePetLicenses_DIM_SecondaryBreed.SecondaryBreed 
+from SeattlePetLicenses_DIM_SecondaryBreed</File>
+              <FormatSpecificOptions>
+                <SingleRowFetch>False</SingleRowFetch>
+                <ReadCentroids>False</ReadCentroids>
+                <TableStyle>Quoted</TableStyle>
+                <CacheData>False</CacheData>
+                <SessionReadOnly>True</SessionReadOnly>
+                <ReadUncommitted>False</ReadUncommitted>
+                <NoProgress>True</NoProgress>
+                <PostSQL />
+                <PreSQLOnConfig>True</PreSQLOnConfig>
+                <PreSQL />
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>aka:localhost_sqlserver_damg7370
+Query=select SeattlePetLicenses_DI...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="SecondaryBreedSK" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_DIM_SecondaryBreed.SecondaryBreedSK,&#xA;	SeattlePetLicenses_DIM_SecondaryBreed.SecondaryBreed &#xA;from SeattlePetLicenses_DIM_SecondaryBreed" type="Int32" />
+                <Field name="SecondaryBreed" size="46" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_DIM_SecondaryBreed.SecondaryBreedSK,&#xA;	SeattlePetLicenses_DIM_SecondaryBreed.SecondaryBreed &#xA;from SeattlePetLicenses_DIM_SecondaryBreed" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="41">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="980" y="768" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Alteryx\Engine\Engine_35048_c5f26128cf7143d598531301aaf72afd_\Engine_32684_949941dc0c694b8b8bbab418edeca210_.yxdb</TempFile>
+              <Layout>
+                <View1>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="42">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1172" y="780" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Alteryx\Engine\Engine_35048_c5f26128cf7143d598531301aaf72afd_\Engine_32684_f4ea2b9b68a74e7f8cd0d6663b98193b_.yxdb</TempFile>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="43">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1388" y="840" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="23">aka:localhost_sqlserver_damg7370|||SeattlePetLicenses_FCT_Pets</File>
+              <Passwords />
+              <CachedCosmeticName />
+              <FormatSpecificOptions>
+                <TransactionMessages>False</TransactionMessages>
+                <Geometry>True</Geometry>
+                <Projection />
+                <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+                <SpatialObjSize>8000</SpatialObjSize>
+                <OutputOption>Delete</OutputOption>
+                <PostSQL />
+                <TransactionSize>10000</TransactionSize>
+                <TableStyle>Quoted</TableStyle>
+                <PreSQL />
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>aka:localhost_sqlserver_damg7370
+Query=SeattlePetLicenses_FCT_Pets</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="28">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="54" y="311" width="1693" height="390" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>SeattlePetLicenses DIM</Caption>
+          <Style TextColor="#314c4a" FillColor="#a8d0fd" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="12">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="788" y="360" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Species" selected="True" />
+                <SelectField field="DI_CreateDate" selected="True" />
+                <SelectField field="DI_WorkflowDirectory" selected="True" />
+                <SelectField field="DI_WorkflowFileName" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="13">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="788" y="456" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="PrimaryBreed" selected="True" />
+                <SelectField field="DI_CreateDate" selected="True" />
+                <SelectField field="DI_WorkflowDirectory" selected="True" />
+                <SelectField field="DI_WorkflowFileName" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="14">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="956" y="372" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="Species" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="15">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.RecordID.RecordID">
+            <Position x="1112" y="360" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FieldName>SpeciesSK</FieldName>
+              <StartValue>1</StartValue>
+              <FieldType>Int32</FieldType>
+              <FieldSize>6</FieldSize>
+              <Position>0</Position>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRecordID" />
+        </Node>
+        <Node ToolID="16">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="944" y="456" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="PrimaryBreed" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="18">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.RecordID.RecordID">
+            <Position x="1100" y="456" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FieldName>PrimaryBreedSK</FieldName>
+              <StartValue>1</StartValue>
+              <FieldType>Int32</FieldType>
+              <FieldSize>6</FieldSize>
+              <Position>0</Position>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRecordID" />
+        </Node>
+        <Node ToolID="19">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="800" y="540" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="SecondaryBreed" selected="True" />
+                <SelectField field="DI_CreateDate" selected="True" />
+                <SelectField field="DI_WorkflowDirectory" selected="True" />
+                <SelectField field="DI_WorkflowFileName" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="20">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="956" y="540" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="SecondaryBreed" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="21">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.RecordID.RecordID">
+            <Position x="1100" y="540" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FieldName>SecondaryBreedSK</FieldName>
+              <StartValue>1</StartValue>
+              <FieldType>Int32</FieldType>
+              <FieldSize>6</FieldSize>
+              <Position>0</Position>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRecordID" />
+        </Node>
+        <Node ToolID="25">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="79" y="455" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <CachedCosmeticName />
+              <File FileFormat="23" RecordLimit="">aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* 
+from SeattlePetLicenses_stg</File>
+              <FormatSpecificOptions>
+                <SingleRowFetch>False</SingleRowFetch>
+                <ReadCentroids>False</ReadCentroids>
+                <TableStyle>Quoted</TableStyle>
+                <CacheData>False</CacheData>
+                <SessionReadOnly>True</SessionReadOnly>
+                <ReadUncommitted>False</ReadUncommitted>
+                <NoProgress>True</NoProgress>
+                <PostSQL />
+                <PreSQLOnConfig>True</PreSQLOnConfig>
+                <PreSQL />
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>aka:localhost_sqlserver_damg7370
+Query=select SeattlePetLicenses_st...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="LicenseSK" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="Int32" />
+                <Field name="LicenseNumber" size="7" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="String" />
+                <Field name="LicenseIssueDate" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="Date" />
+                <Field name="AnimalName" size="50" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="V_WString" />
+                <Field name="Species" size="4" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="String" />
+                <Field name="PrimaryBreed" size="46" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="V_String" />
+                <Field name="SecondaryBreed" size="46" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="V_String" />
+                <Field name="ZipCode" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="Int32" />
+                <Field name="DI_CreateDate" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="DateTime" />
+                <Field name="DI_WorkflowDirectory" size="256" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="V_WString" />
+                <Field name="DI_WorkflowFileName" size="256" source="File: aka:localhost_sqlserver_damg7370|||select SeattlePetLicenses_stg.* &#xA;from SeattlePetLicenses_stg" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="26">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="380" y="456" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="DateTimeNow()" field="DI_CreateDate" size="19" type="DateTime" />
+                <FormulaField expression="[Engine.WorkflowDirectory]" field="DI_WorkflowDirectory" size="256" type="V_WString" />
+                <FormulaField expression="[Engine.WorkflowFileName]" field="DI_WorkflowFileName" size="256" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>DI_CreateDate = DateTimeNow()
+DI_WorkflowDirectory = [Engine.WorkflowDirectory]
+...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="30">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1484" y="456" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="23">aka:localhost_sqlserver_damg7370|||SeattlePetLicenses_DIM_PrimaryBreed</File>
+              <Passwords />
+              <CachedCosmeticName />
+              <FormatSpecificOptions>
+                <TransactionMessages>False</TransactionMessages>
+                <Geometry>True</Geometry>
+                <Projection />
+                <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+                <SpatialObjSize>8000</SpatialObjSize>
+                <OutputOption>Delete</OutputOption>
+                <PostSQL />
+                <TransactionSize>10000</TransactionSize>
+                <TableStyle>Quoted</TableStyle>
+                <PreSQL />
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>aka:localhost_sqlserver_damg7370
+Query=SeattlePetLicenses_DIM_Prima...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="31">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1340" y="540" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="23">aka:localhost_sqlserver_damg7370|||SeattlePetLicenses_DIM_SecondaryBreed</File>
+              <Passwords />
+              <CachedCosmeticName />
+              <FormatSpecificOptions>
+                <TransactionMessages>False</TransactionMessages>
+                <Geometry>True</Geometry>
+                <Projection />
+                <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+                <SpatialObjSize>8000</SpatialObjSize>
+                <OutputOption>Delete</OutputOption>
+                <PostSQL />
+                <TransactionSize>10000</TransactionSize>
+                <TableStyle>Quoted</TableStyle>
+                <PreSQL />
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>aka:localhost_sqlserver_damg7370
+Query=SeattlePetLicenses_DIM_Secon...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="29">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1616" y="360" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="23">aka:localhost_sqlserver_damg7370|||SeattlePetLicenses_DIM_Species</File>
+              <Passwords />
+              <CachedCosmeticName />
+              <FormatSpecificOptions>
+                <TransactionMessages>False</TransactionMessages>
+                <Geometry>True</Geometry>
+                <Projection />
+                <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+                <SpatialObjSize>8000</SpatialObjSize>
+                <OutputOption>Delete</OutputOption>
+                <PostSQL />
+                <TransactionSize>10000</TransactionSize>
+                <TableStyle>Quoted</TableStyle>
+                <PreSQL />
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>aka:localhost_sqlserver_damg7370
+Query=SeattlePetLicenses_DIM_Speci...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="27">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="55" y="53" width="1367" height="241" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>SeattlePetLicenses STG</Caption>
+          <Style TextColor="#314c4a" FillColor="#ffffb9" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="1">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="80" y="102" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>\t</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>65001</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Seattle_Pet_Licenses.tsv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="License Issue Date" size="254" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="V_WString" />
+                <Field name="License Number" size="254" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="V_WString" />
+                <Field name="Animal's Name" size="254" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="V_WString" />
+                <Field name="Species" size="254" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="V_WString" />
+                <Field name="Primary Breed" size="254" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="V_WString" />
+                <Field name="Secondary Breed" size="254" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="V_WString" />
+                <Field name="ZIP Code" size="254" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="4">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AutoField.AutoField">
+            <Position x="320" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Fields>
+                <Field field="License Issue Date" selected="True" />
+                <Field field="License Number" selected="True" />
+                <Field field="Animal's Name" selected="True" />
+                <Field field="Species" selected="True" />
+                <Field field="Primary Breed" selected="True" />
+                <Field field="Secondary Breed" selected="True" />
+                <Field field="ZIP Code" selected="True" />
+                <Field field="*Unknown" selected="False" />
+              </Fields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="License Issue Date" size="17" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="String" />
+                <Field name="License Number" size="7" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="String" />
+                <Field name="Animal's Name" size="50" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="V_WString" />
+                <Field name="Species" size="4" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="String" />
+                <Field name="Primary Breed" size="46" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="V_String" />
+                <Field name="Secondary Breed" size="46" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="V_String" />
+                <Field name="ZIP Code" source="File: C:\Users\rick\OneDrive - Northeastern University\damg7370_2022_Fall\Data - Seattle\Seattle_Pet_Licenses.tsv" type="Int32" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAutoField" />
+        </Node>
+        <Node ToolID="7">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DateTime.DateTime">
+            <Position x="512" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <IsFrom value="False" />
+              <InputFieldName>License Issue Date</InputFieldName>
+              <Language>English</Language>
+              <Format>Month dd yyyy</Format>
+              <OutputFieldName>LicenseIssueDate</OutputFieldName>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Convert License Issue Date From:
+Custom</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDateTime" />
+        </Node>
+        <Node ToolID="8">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="716" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="DateTimeNow()" field="DI_CreateDate" size="19" type="DateTime" />
+                <FormulaField expression="[Engine.WorkflowDirectory]" field="DI_WorkflowDirectory" size="256" type="V_WString" />
+                <FormulaField expression="[Engine.WorkflowFileName]" field="DI_WorkflowFileName" size="256" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>DI_CreateDate = DateTimeNow()
+DI_WorkflowDirectory = [Engine.WorkflowDirectory]
+...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="9">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="872" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="True" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="License Issue Date" selected="False" />
+                <SelectField field="License Number" selected="True" rename="LicenseNumber" />
+                <SelectField field="LicenseIssueDate" selected="True" />
+                <SelectField field="Animal's Name" selected="True" rename="AnimalName" />
+                <SelectField field="Species" selected="True" />
+                <SelectField field="Primary Breed" selected="True" rename="PrimaryBreed" />
+                <SelectField field="Secondary Breed" selected="True" rename="SecondaryBreed" />
+                <SelectField field="ZIP Code" selected="True" rename="ZipCode" />
+                <SelectField field="DI_CreateDate" selected="True" />
+                <SelectField field="DI_WorkflowDirectory" selected="True" />
+                <SelectField field="DI_WorkflowFileName" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="10">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.RecordID.RecordID">
+            <Position x="1028" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FieldName>LicenseSK</FieldName>
+              <StartValue>1</StartValue>
+              <FieldType>Int32</FieldType>
+              <FieldSize>6</FieldSize>
+              <Position>0</Position>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRecordID" />
+        </Node>
+        <Node ToolID="11">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1292" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="23">aka:localhost_sqlserver_damg7370|||SeattlePetLicenses_stg</File>
+              <Passwords />
+              <CachedCosmeticName />
+              <FormatSpecificOptions>
+                <TransactionMessages>False</TransactionMessages>
+                <Geometry>True</Geometry>
+                <Projection />
+                <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+                <SpatialObjSize>8000</SpatialObjSize>
+                <OutputOption>Delete</OutputOption>
+                <PostSQL />
+                <TransactionSize>10000</TransactionSize>
+                <TableStyle>Quoted</TableStyle>
+                <PreSQL />
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>aka:localhost_sqlserver_damg7370
+Query=SeattlePetLicenses_stg</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="32" Connection="Output" />
+      <Destination ToolID="33" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="33" Connection="Output" />
+      <Destination ToolID="34" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="35" Connection="Output" />
+      <Destination ToolID="34" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="34" Connection="Join" />
+      <Destination ToolID="36" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="38" Connection="Output" />
+      <Destination ToolID="36" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="34" Connection="Left" />
+      <Destination ToolID="37" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="36" Connection="Join" />
+      <Destination ToolID="39" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="40" Connection="Output" />
+      <Destination ToolID="39" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="36" Connection="Left" />
+      <Destination ToolID="41" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="39" Connection="Left" />
+      <Destination ToolID="42" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="39" Connection="Join" />
+      <Destination ToolID="43" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="12" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Unique" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="15" Connection="Output" />
+      <Destination ToolID="29" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Unique" />
+      <Destination ToolID="18" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output" />
+      <Destination ToolID="30" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="19" Connection="Output" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="20" Connection="Unique" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="21" Connection="Output" />
+      <Destination ToolID="31" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="25" Connection="Output" />
+      <Destination ToolID="26" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="26" Connection="Output" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="26" Connection="Output" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="26" Connection="Output" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>seattle_per_licenses_stg_dim_fct</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="98a1ca66-ee2b-4604-beac-01bf6cd88f1f" />
+      <Telemetry>
+        <PreviousWorkflowId value="a478015d-476a-4852-ad0b-8730e0211f97" />
+        <OriginWorkflowId value="f90d1183-ef6a-4553-9f7e-0349d51b01dd" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
