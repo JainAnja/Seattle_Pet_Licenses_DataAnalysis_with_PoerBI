@@ -1,4 +1,4 @@
-# Seattle_Pet_Licenses_DataAnalysis_with_PoerBI
+# Seattle_Pet_Licenses_DataAnalysis_with_PowerBI
 
 The Seattle pet licenses data analysis is likely an analysis of the data related to pet licenses issued in the city of Seattle, Washington. The goal of this analysis could be to understand the trends and patterns in pet ownership, identify popular pet types and breeds, and gain insights into the demographic characteristics of pet owners.
 
